@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-HRZPlan::Application.config.secret_key_base = '5f1749569c8f8054a0f08bbe223d4c887b0dd77c1dff65d06b19eb20837315f15d89938a69a720bf2142ed52c893471028db03e7863dc56fa20728f37f1dc416'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+HRZPlan::Application.config.secret_key_base = secure_token
