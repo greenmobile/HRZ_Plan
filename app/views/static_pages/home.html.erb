@@ -1,7 +1,9 @@
-<% provide(:title, 'Home') %>
-<h1>Sample App</h1>
-<p>
-  This is the home page for the
-  <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
-  sample application.
-</p>
+<div class="center hero-unit">
+  <h2>
+     Hiwi-Planer des Hochschulrechenzentrums der Philipps-Universität Marburg
+  </h2>
+
+  <%= link_to "Login!", '#', class: "btn btn-large btn-primary" %>
+</div>
+
+<%= link_to image_tag("hrzlogo20.jpg", alt: "Hochschulrechenzentrum", size:"130x130"), 'http://www.uni-marburg.de/hrz' %>
